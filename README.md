@@ -5,9 +5,7 @@ This project is part of the Final Year coursework for the CADT program. It invol
 
 ## Project Structure
 - `data/`: Contains the datasets used in the project.
-- `notebooks/`: Jupyter notebooks with the analysis and model development.
-- `src/`: Source code for data processing, feature engineering, and model training.
-- `reports/`: Generated reports and visualizations.
+- `EDA.ipynb`: Jupyter notebooks with the analysis on data.
 - `README.md`: Project documentation.
 
 ## Installation
