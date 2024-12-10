@@ -1,4 +1,4 @@
-# Final Project
+# Resume Ranking with Semantic Search - Final Project
 
 ## Overview
 This project is part of the Final Year coursework for the CADT program. It involves the application of various data science techniques to solve a specific problem.
