@@ -68,7 +68,11 @@ uploaded_files = st.file_uploader("Upload PDF files", type=["pdf"], accept_multi
 # Prompt for the job description that will be applied to all PDFs
 job_description_text = st.text_area("Enter the job description for all PDFs", height=150)
 
-if uploaded_files and job_description_text:
+# Add a submit button to trigger the processing when clicked
+submit_button = st.button("Submit")
+
+
+if submit_button and uploaded_files and job_description_text:
     all_rows = []
     # Preprocess the job description text
     preprocessed_job_desc = preprocess_text(job_description_text)
