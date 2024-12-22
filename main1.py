@@ -9,13 +9,19 @@ from nltk.tokenize import word_tokenize
 from sentence_transformers import SentenceTransformer, util
 import uuid as uuid_lib
 
+
+nltk_data_dir = "./nltk_data"  # Local directory for nltk data
+
 # Download stopwords from NLTK
 # Download necessary resources
 nltk.download('punkt')
 nltk.download('stopwords')
 
 # Additional resource 'punkt_tab'
-nltk.download('punkt_tab')
+nltk.download('punkt_tab', download_dir=nltk_data_dir)
+
+nltk.data.path.append(nltk_data_dir)  # Use local nltk_data path
+
 
 # Define a function to preprocess text
 def preprocess_text(text):
