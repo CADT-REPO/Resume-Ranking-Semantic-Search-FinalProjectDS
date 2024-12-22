@@ -10,8 +10,8 @@ from sentence_transformers import SentenceTransformer, util
 import uuid as uuid_lib
 
 # Download stopwords from NLTK
-nltk.download('stopwords')
-nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('punkt')
 
 # Define a function to preprocess text
 def preprocess_text(text):
