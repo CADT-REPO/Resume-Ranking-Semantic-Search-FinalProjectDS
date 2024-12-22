@@ -13,8 +13,6 @@ import uuid as uuid_lib
 # Download necessary resources
 nltk.download('punkt')
 nltk.download('stopwords')
-
-# Additional resource 'punkt_tab'
 nltk.download('punkt_tab')
 
 # Define a function to preprocess text
@@ -28,8 +26,7 @@ def preprocess_text(text):
     # Remove stopwords
     stop_words = set(stopwords.words('english'))
     tokens = [word for word in tokens if word not in stop_words]
-    # Rejoin tokens into a cleaned string
-    return ' '.join(tokens)
+    return tokens
 
 # Function to extract text from a PDF file using pdfplumber
 def extract_text_from_pdf(pdf_file):
