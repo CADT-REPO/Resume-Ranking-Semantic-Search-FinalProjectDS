@@ -5,3 +5,6 @@ seaborn
 wordcloud
 nltk
 scikit-learn
+streamlit
+sentence_transformers
+pdfplumber
