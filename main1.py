@@ -49,7 +49,7 @@ def preprocess_text(text):
     text = re.sub(r'\s+', ' ', text).strip()
 
     # Remove non-alphanumeric characters (except spaces)
-    text = re.sub(r'[^\w\s]', '', text)
+    text = re.sub(r'[^\.\,\w\s]', '', text)
 
     # Convert to lowercase
     text = text.lower()
