@@ -8,6 +8,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from sentence_transformers import SentenceTransformer, util
 import uuid as uuid_lib
+import re
 
 # Download stopwords from NLTK
 # Download necessary resources
@@ -17,16 +18,43 @@ nltk.download('punkt_tab')
 
 # Define a function to preprocess text
 def preprocess_text(text):
-    # Convert text to lowercase
+    # # Convert text to lowercase
+    # text = text.lower()
+    # # Remove punctuation
+    # text = text.translate(str.maketrans('', '', string.punctuation))
+    # # Tokenize text
+    # # tokens = word_tokenize(text)
+    # # Remove stopwords
+    # stop_words = set(stopwords.words('english'))
+    # tokens = [word for word in tokens if word not in stop_words]
+    # return tokens
+    """
+    Cleans text data by removing unwanted characters, normalizing whitespace,
+    and handling case sensitivity.
+
+    Args:
+        text (str): The raw text to be cleaned.
+
+    Returns:
+        str: The cleaned text.
+    """
+
+    # Remove HTML tags (if any)
+    text = re.sub(r'<[^>]+>', '', text)
+
+    # Remove URLs
+    text = re.sub(r'https?://\S+|www\.\S+', '', text)
+
+    # Remove extra whitespace and line breaks
+    text = re.sub(r'\s+', ' ', text).strip()
+
+    # Remove non-alphanumeric characters (except spaces)
+    text = re.sub(r'[^\w\s]', '', text)
+
+    # Convert to lowercase
     text = text.lower()
-    # Remove punctuation
-    text = text.translate(str.maketrans('', '', string.punctuation))
-    # Tokenize text
-    tokens = word_tokenize(text)
-    # Remove stopwords
-    stop_words = set(stopwords.words('english'))
-    tokens = [word for word in tokens if word not in stop_words]
-    return tokens
+
+    return text
 
 # Function to extract text from a PDF file using pdfplumber
 def extract_text_from_pdf(pdf_file):
@@ -104,8 +132,8 @@ if submit_button and uploaded_files and job_description_text:
             # Add the row to the list with the extracted resume text, job description, and similarity score
             all_rows.append({
                 "uuid": file_id,
-                "resume_text": resume_text,
-                "job_description_text": job_description_text,
+                "resume_text": preprocessed_resume_text,
+                "job_description_text": preprocessed_job_desc,
                 "similarity_score": similarity_score
             })
 
